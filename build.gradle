@@ -25,6 +25,9 @@ repositories {
 
 dependencies {
 
+    compile group: 'commons-io', name: 'commons-io', version: '2.6' // apache commons io
+    compile 'com.google.code.gson:gson:2.8.6' // java serialization, POJOs -> JSON
+
     // Use the latest Groovy version for Spock testing
     testImplementation 'org.codehaus.groovy:groovy-all:2.5.8'
 
@@ -32,7 +35,8 @@ dependencies {
     testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
     testImplementation 'junit:junit:4.12'
 
-    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:+' // find bugs in java programs
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:+'
+    implementation 'org.jetbrains:annotations:15.0'// find bugs in java programs
 
 }
 
