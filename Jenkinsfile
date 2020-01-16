@@ -31,8 +31,7 @@ def artifactoryCredentialsId = "0bafad7b-a080-4271-abac-b45ea0f3209f"
 
 //// internal jenkins credentials link for git ssh keys
 //// requires the ssh key to be stored in the internal jenkins credentials keystore
-def sshCredentialsId = "990d8902-4889-4b3a-b123-208c0cfe9e0a"
-
+def sshCredentialsId = "5470eb14-b7a1-4247-baba-1e0f9a907666"
 //// define and setjava version ////
 //// requires the java version to be set in the internal jenkins java version management
 //// use identifier accordingly
