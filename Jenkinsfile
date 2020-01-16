@@ -17,7 +17,7 @@ final String rocketChatChannel = "jenkins"
 //// *IMPORTANT2:* you must provide exact 4 elements!
 projects = ['apex-charts']
 
-orgNames = ['johanneshiry']
+orgNames = ['ie3-institute']
 urls = ['git@github.com:' + orgNames.get(0)]
 
 
