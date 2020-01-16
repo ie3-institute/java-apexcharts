@@ -8,7 +8,6 @@ package edu.ie3.vis.apex.data;
 
 import java.util.Objects;
 
-
 /**
  * //ToDo: Class Description
  *
@@ -41,10 +40,8 @@ public class Tuple2<X extends Comparable<X>, Y extends Comparable<Y>>
 
   @Override
   public boolean equals(Object o) {
-    if(this == o)
-      return true;
-    if(o == null || getClass() != o.getClass())
-      return false;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
     Tuple2<?, ?> tuple2 = (Tuple2<?, ?>) o;
     return x.equals(tuple2.x) && y.equals(tuple2.y);
   }
