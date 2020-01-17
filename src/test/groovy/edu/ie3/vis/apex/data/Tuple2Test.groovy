@@ -32,6 +32,24 @@ class Tuple2Test extends Specification {
         Collections.sort(tupleList)
         tupleList.get(0) == testTuple2
         tupleList.get(1) == testTuple1
+    }
+
+    def "Two valid tuples with the same values should be equal"() {
+        given: "two valid, equal tuples"
+        Tuple2<Double, Double> testTuple1 = new Tuple2(100.0, 3.0)
+        Tuple2<Double, Double> testTuple2 = new Tuple2(100.0, 3.0)
+
+        expect: "equals should return true"
+        testTuple1 == testTuple2
+
+    }
+
+    def "hashCode should be calculated correctly for a tuple "() {
+        given: "a valid tuple"
+        Tuple2<Double, Double> testTuple1 = new Tuple2(100.0, 3.0)
+
+        expect: "equals should return true"
+        testTuple1.hashCode() == 962923
 
     }
 }
