@@ -19,7 +19,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 /**
  * //ToDo: Class Description
  *
@@ -30,8 +29,9 @@ public class ChartFactory {
 
   public static final Logger logger = LogManager.getLogger(ChartFactory.class);
 
-  private static final String APEX_CHARTS_URL       = "https://cdn.jsdelivr.net/npm/apexcharts";
-  private static final String APEX_CHARTS_REACT_URL = "https://cdn.jsdelivr.net/npm/react-apexcharts";
+  private static final String APEX_CHARTS_URL = "https://cdn.jsdelivr.net/npm/apexcharts";
+  private static final String APEX_CHARTS_REACT_URL =
+      "https://cdn.jsdelivr.net/npm/react-apexcharts";
 
   private static final String DEFAULT_TEMPLATE =
       "<!DOCTYPE html>\n"
