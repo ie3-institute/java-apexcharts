@@ -14,7 +14,7 @@ package edu.ie3.vis.apex.options.chart;
  */
 public class AnimateGradually {
 
-  public static AnimateGradually DISABLED = new AnimateGradually(false, 0L);
+  public static final AnimateGradually DISABLED = new AnimateGradually(false, 0L);
 
   private final Boolean enabled;
   private final long delay;

@@ -16,7 +16,7 @@ package edu.ie3.vis.apex.options.stroke;
  */
 public class SingleStrokeOptions extends StrokeOptions {
 
-  public static SingleStrokeOptions DEFAULT =
+  public static final SingleStrokeOptions DEFAULT =
       new SingleStrokeOptions(true, LineCap.butt, 2, new int[] {0}, LineCurve.smooth);
 
   private final LineCurve curve;

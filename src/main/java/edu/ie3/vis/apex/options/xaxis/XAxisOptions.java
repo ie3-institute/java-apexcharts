@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class XAxisOptions {
 
-  public static XAxisOptions DEFAULT = new XAxisOptions(XAxisType.category, new ArrayList<>());
+  public static final XAxisOptions DEFAULT = new XAxisOptions(XAxisType.category, new ArrayList<>());
 
   private final XAxisType type;
   private final List<String> categories;
