@@ -40,7 +40,7 @@ class Tuple2Test extends Specification {
         Tuple2<Double, Double> testTuple2 = new Tuple2(100.0, 3.0)
 
         expect: "equals should return true"
-        testTuple1 == testTuple2
+        testTuple1.equals(testTuple2)
 
     }
 
