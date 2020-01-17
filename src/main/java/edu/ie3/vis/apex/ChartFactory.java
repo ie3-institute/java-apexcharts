@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class ChartFactory {
 
-  public static final Logger logger = LogManager.getLogger(ChartFactory.class);
+  private static final Logger logger = LogManager.getLogger(ChartFactory.class);
 
   private static final String APEX_CHARTS_URL = "https://cdn.jsdelivr.net/npm/apexcharts";
   private static final String APEX_CHARTS_REACT_URL =

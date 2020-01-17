@@ -9,6 +9,7 @@ package edu.ie3.vis.apex;
 import edu.ie3.vis.apex.data.PairDataSeries;
 import edu.ie3.vis.apex.data.SingleDataSeries;
 import edu.ie3.vis.apex.data.Tuple2;
+import edu.ie3.vis.apex.exceptions.ApexChartsException;
 import edu.ie3.vis.apex.options.chart.ChartOptions;
 import edu.ie3.vis.apex.options.stroke.StrokeOptions;
 import edu.ie3.vis.apex.options.title.ChartTitle;
@@ -16,6 +17,8 @@ import edu.ie3.vis.apex.options.xaxis.XAxisOptions;
 import edu.ie3.vis.apex.options.xaxis.XAxisType;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * //ToDo: Class Description
@@ -24,6 +27,8 @@ import java.util.stream.Collectors;
  * @since 14.01.20
  */
 public class SingleValuesChart extends ApexChart {
+
+  private static final Logger logger = LogManager.getLogger(SingleValuesChart.class);
 
   private final List<SingleDataSeries> series;
   private final XAxisOptions xaxis;
@@ -72,8 +77,12 @@ public class SingleValuesChart extends ApexChart {
           if (result.containsKey(xValues)) {
             result.get(xValues).add(singleDataSeries);
           } else {
-            throw new RuntimeException(
-                "Invalid data provided! Provided y values needs to be the same for all series!");
+            try {
+              throw new ApexChartsException(
+                  "Invalid data provided! Provided y values needs to be the same for all series!");
+            } catch (ApexChartsException e) {
+              logger.throwing(e);
+            }
           }
         });
 

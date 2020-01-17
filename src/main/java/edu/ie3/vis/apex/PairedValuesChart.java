@@ -7,6 +7,7 @@
 package edu.ie3.vis.apex;
 
 import edu.ie3.vis.apex.data.PairDataSeries;
+import edu.ie3.vis.apex.exceptions.ApexChartsException;
 import edu.ie3.vis.apex.options.chart.ChartOptions;
 import edu.ie3.vis.apex.options.chart.ChartType;
 import edu.ie3.vis.apex.options.stroke.StrokeOptions;
@@ -30,11 +31,12 @@ public class PairedValuesChart<X extends Comparable<X>, Y extends Comparable<Y>>
       ChartOptions chartOptions,
       ChartTitle title,
       XAxisOptions xaxis,
-      StrokeOptions strokeOptions) {
+      StrokeOptions strokeOptions)
+      throws ApexChartsException {
     super(title, chartOptions, strokeOptions);
 
     if (chartOptions.getType().equals(ChartType.line)) {
-      throw new RuntimeException(
+      throw new ApexChartsException(
           "Provision of paired values is not supported for chart type"
               + ChartType.line
               + " at the moment. And btw it also looks awful! "
