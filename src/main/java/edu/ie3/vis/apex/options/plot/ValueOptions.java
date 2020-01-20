@@ -6,10 +6,56 @@
 
 package edu.ie3.vis.apex.options.plot;
 
+import java.awt.*;
+
+import static edu.ie3.vis.apex.util.ApexUtil.rgbToHex;
+
+
 /**
  * //ToDo: Class Description
  *
  * @version 0.1
  * @since 19.01.20
  */
-public class ValueOptions {}
+public class ValueOptions {
+
+    private final boolean show;
+    private final String  fontSize;
+    private final String  fontFamily;
+    private final String  color;
+    private final int     offsetY;
+    private final String  formatter;
+
+    public ValueOptions(boolean show, int fontSize, String fontFamily, Color color, int offsetY, String formatter) {
+        this.show = show;
+        this.fontSize = Integer.toString(fontSize).concat("px");
+        this.fontFamily = fontFamily;
+        this.color = rgbToHex(color);
+        this.offsetY = offsetY;
+        this.formatter = formatter;
+    }
+
+    public boolean isShow() {
+        return show;
+    }
+
+    public String getFontSize() {
+        return fontSize;
+    }
+
+    public String getFontFamily() {
+        return fontFamily;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getOffsetY() {
+        return offsetY;
+    }
+
+    public String getFormatter() {
+        return formatter;
+    }
+}
