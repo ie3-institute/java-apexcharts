@@ -355,7 +355,7 @@ if (env.BRANCH_NAME == "master") {
         if (params.triggered != "true" && params.comment_body != "!test") {
 
             log(i, "Scan mode. Doing nothing!")
-            currentBuild.result = 'FAILURE' // signals github that this branch hasn't build yet -> fail before first build
+           currentBuild.result = 'SUCCESS' 
             return
         }
 
