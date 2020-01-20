@@ -80,6 +80,8 @@ def log(String level, String message) {
     println(p(level) + message)
 }
 
+if(isBranchIndexingCause)
+    return
 
 /////////////////////////
 // master branch script
@@ -190,10 +192,10 @@ if (env.BRANCH_NAME == "master") {
     } else {
         // merge mode
         // disable scan
-        if (params.pull_request_title == "") {
-            currentBuild.result = 'SUCCESS'
-            return
-        }
+//        if (params.pull_request_title == "") {
+//            currentBuild.result = 'SUCCESS'
+//            return
+//        }
 
         // merge into master
         // notify rocket chat about the started master branch deployment
@@ -352,12 +354,12 @@ if (env.BRANCH_NAME == "master") {
         getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
 
         // disable scan
-        if (params.triggered != "true" && params.comment_body != "!test") {
-
-            log(i, "Scan mode. Doing nothing!")
-           currentBuild.result = 'SUCCESS' 
-            return
-        }
+//        if (params.triggered != "true" && params.comment_body != "!test") {
+//
+//            log(i, "Scan mode. Doing nothing!")
+//           currentBuild.result = 'SUCCESS'
+//            return
+//        }
 
         // This displays colors using the 'xterm' ansi color map.
         ansiColor('xterm') {
@@ -649,4 +651,18 @@ def resolveBranchName(String featureBranchPRMinusNo, String orgName, String repo
 
     return branch
 
+}
+
+def isBranchIndexingCause() {
+    def isBranchIndexing = false
+    if (!currentBuild.rawBuild) {
+        return true
+    }
+
+    currentBuild.rawBuild.getCauses().each { cause ->
+        if (cause instanceof jenkins.branch.BranchIndexingCause) {
+            isBranchIndexing = true
+        }
+    }
+    return isBranchIndexing
 }
