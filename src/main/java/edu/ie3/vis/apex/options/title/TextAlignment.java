@@ -7,28 +7,26 @@
 package edu.ie3.vis.apex.options.title;
 
 /**
- * //ToDo: Class Description
+ * Text alignment parameters relative to chart area to be used with {@link ChartTitle}
  *
  * @version 0.1
  * @since 13.01.20
  */
 public enum TextAlignment {
-  left("left"),
-  center("center"),
-  right("right");
+    left("left"), center("center"), right("right");
 
-  private String id;
+    private String id;
 
-  TextAlignment(String id) {
-    this.id = id;
-  }
+    TextAlignment(String id) {
+        this.id = id;
+    }
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  @Override
-  public String toString() {
-    return id;
-  }
+    @Override
+    public String toString() {
+        return id;
+    }
 }

@@ -7,7 +7,13 @@
 package edu.ie3.vis.apex.options.stroke;
 
 /**
- * //ToDo: Class Description
+ * Whether to draw smooth lines or straight lines in line / area charts.
+ *
+ * Available Options:
+ *
+ * smooth: connects the points in a curve fashion. Also known as spline
+ * straight: connect the points in straight lines.
+ * stepline: points are connected by horizontal and vertical line segments, looking like steps of a staircase.
  *
  * @version 0.1
  * @since 14.01.20

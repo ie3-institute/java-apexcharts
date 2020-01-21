@@ -7,7 +7,7 @@
 package edu.ie3.vis.apex.options.title;
 
 /**
- * //ToDo: Class Description https://apexcharts.com/docs/options/title/
+ * Text to display as a title of chart
  *
  * @version 0.1
  * @since 13.01.20
@@ -21,6 +21,16 @@ public class ChartTitle {
   private final long offsetY;
   private final boolean floating;
 
+  /**
+   * Standard constructor for chart title
+   * @param text the title text
+   * @param align the text alignment
+   * @param margin vertical spacing around the title text
+   * @param offsetX left offset for title text
+   * @param offsetY top offset for title text
+   * @param floating if set to true, it will take out the title text from the chart area
+   *                 and make it float on top of the chart.
+   */
   public ChartTitle(
       String text, TextAlignment align, long margin, long offsetX, long offsetY, boolean floating) {
     this.text = text;

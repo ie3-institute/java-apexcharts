@@ -7,7 +7,13 @@
 package edu.ie3.vis.apex.options.stroke;
 
 /**
- * //ToDo: Class Description
+ * Setting the starting and ending points of stroke in a line chart.
+ *
+ * Available Options:
+ *
+ * butt: ends the stroke with a 90-degree angle
+ * square: similar to butt except that it extends the stroke beyond the length of the path
+ * round: ends the path-stroke with a radius that smooths out the start and end points
  *
  * @version 0.1
  * @since 14.01.20
