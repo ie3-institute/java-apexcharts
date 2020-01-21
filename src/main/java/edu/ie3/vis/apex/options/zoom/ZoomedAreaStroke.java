@@ -1,5 +1,10 @@
 package edu.ie3.vis.apex.options.zoom;
 
+import java.awt.*;
+
+import static edu.ie3.vis.apex.util.ApexUtil.rgbToHex;
+
+
 /**
  * Stroke options for {@link ZoomedAreaOptions}
  *
@@ -7,6 +12,8 @@ package edu.ie3.vis.apex.options.zoom;
  * @since 21.01.20
  */
 public class ZoomedAreaStroke {
+
+    public static final ZoomedAreaStroke TRANSPARENT = new ZoomedAreaStroke(Color.WHITE, 0.0,0);
 
     private final String color;
     private final double opacity;
@@ -18,8 +25,8 @@ public class ZoomedAreaStroke {
      * @param opacity the transparency level of the selection border
      * @param width   the width selection border
      */
-    public ZoomedAreaStroke(String color, double opacity, int width) {
-        this.color = color;
+    public ZoomedAreaStroke(Color color, double opacity, int width) {
+        this.color = rgbToHex(color);
         this.opacity = opacity;
         this.width = width;
     }

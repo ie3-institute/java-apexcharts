@@ -10,6 +10,9 @@ package edu.ie3.vis.apex.options.zoom;
  */
 public class ZoomedAreaOptions {
 
+    public final static ZoomedAreaOptions TRANSPARENT =
+                    new ZoomedAreaOptions(ZoomedAreaFill.TRANSPARENT, ZoomedAreaStroke.TRANSPARENT);
+
     private final ZoomedAreaFill   fill;
     private final ZoomedAreaStroke stroke;
 

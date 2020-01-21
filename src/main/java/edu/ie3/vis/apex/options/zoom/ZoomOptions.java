@@ -14,6 +14,9 @@ package edu.ie3.vis.apex.options.zoom;
  */
 public class ZoomOptions {
 
+    public static ZoomOptions DEFAULT_X_WITH_AUTOSCALE =
+                    new ZoomOptions(true, ZoomType.x, true, ZoomedAreaOptions.TRANSPARENT);
+
     private final Boolean           enabled;
     private final ZoomType          type;
     private final boolean           autoScaleYaxis;
@@ -29,6 +32,7 @@ public class ZoomOptions {
      * @param autoScaleYaxis When this option is turned on, the chart’s y-axis re-scales to a new
      *                       low and high based on the visible area. Helpful in situations where
      *                       the user zoomed in to a small area to get a better view.
+     *                       Known Issue: This option doesn’t works in a multi-axis chart (when you have more than 1 y-axis)
      * @param zoomedArea     options for the  area which is drawn when a user drags the mouse from one point to another
      */
     public ZoomOptions(Boolean enabled, ZoomType type, boolean autoScaleYaxis, ZoomedAreaOptions zoomedArea) {

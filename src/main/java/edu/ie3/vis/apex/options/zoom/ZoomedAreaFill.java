@@ -13,6 +13,8 @@ import static edu.ie3.vis.apex.util.ApexUtil.rgbToHex;
  */
 public class ZoomedAreaFill {
 
+    public static final ZoomedAreaFill TRANSPARENT = new ZoomedAreaFill(Color.WHITE, 0.0);
+
     private final String color;
     private final double opacity;
 
