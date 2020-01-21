@@ -6,6 +6,9 @@
 
 package edu.ie3.vis.apex.options.chart;
 
+import edu.ie3.vis.apex.options.zoom.ZoomOptions;
+
+
 /**
  * Wrapper class holding all options that can be used to parameterize charts.
  *
@@ -14,11 +17,11 @@ package edu.ie3.vis.apex.options.chart;
  */
 public class ChartOptions {
 
-    private final ChartType        type;
-    private final Boolean          stacked;
-    private final String           height;
-    private final ZoomOptions      zoom;
-    private final Animations       animations;
+    private final ChartType   type;
+    private final Boolean     stacked;
+    private final String      height;
+    private final ZoomOptions zoom;
+    private final Animations  animations;
     private final DynamicAnimation dynamicAnimation;
 
     /**
@@ -29,20 +32,20 @@ public class ChartOptions {
      *                         chart types and won’t work in combo/mixed charts combinations.
      *                         So, an area series combined with a column series will not work.
      * @param height           height of the chart in pixel
-     * @param zoom             zoom configuration in axis charts
-     * @param animations
-     * @param dynamicAnimation
+     * @param zoomOptions      zoomOptions configuration in axis charts, see {@link ZoomOptions} for details
+     * @param animations       animation configuration, see {@link Animations} for details
+     * @param dynamicAnimation dynamic animation configuration, see {@link DynamicAnimation} for details
      */
     public ChartOptions(ChartType type,
                         Boolean stacked,
                         int height,
-                        ZoomOptions zoom,
+                        ZoomOptions zoomOptions,
                         Animations animations,
                         DynamicAnimation dynamicAnimation) {
         this.type = type;
         this.stacked = stacked;
         this.height = Integer.toString(height).concat("px");
-        this.zoom = zoom;
+        this.zoom = zoomOptions;
         this.animations = animations;
         this.dynamicAnimation = dynamicAnimation;
     }
@@ -50,14 +53,16 @@ public class ChartOptions {
     /**
      * Constructor for chart parameterization with disabled {@link DynamicAnimation}s
      *
-     * @param type
-     * @param stacked
-     * @param height
-     * @param zoom
-     * @param animations
+     * @param type        the type of the chart, see {@link ChartType} for details
+     * @param stacked     enables stacked option for axis charts.  Note: A stacked chart works only for same
+     *                    chart types and won’t work in combo/mixed charts combinations.
+     *                    So, an area series combined with a column series will not work.
+     * @param height      height of the chart in pixel
+     * @param zoomOptions zoomOptions configuration in axis charts, see {@link ZoomOptions} for details
+     * @param animations  animation configuration, see {@link Animations} for details
      */
-    public ChartOptions(ChartType type, Boolean stacked, int height, ZoomOptions zoom, Animations animations) {
-        this(type, stacked, height, zoom, animations, new DynamicAnimation(false, 0L));
+    public ChartOptions(ChartType type, Boolean stacked, int height, ZoomOptions zoomOptions, Animations animations) {
+        this(type, stacked, height, zoomOptions, animations, new DynamicAnimation(false, 0L));
     }
 
     public ChartType getType() {

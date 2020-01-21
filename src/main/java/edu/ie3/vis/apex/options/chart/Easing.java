@@ -7,29 +7,26 @@
 package edu.ie3.vis.apex.options.chart;
 
 /**
- * //ToDo: Class Description https://apexcharts.com/docs/options/chart/animations/
+ * Easing options for {@link Animations}
  *
  * @version 0.1
  * @since 14.01.20
  */
 public enum Easing {
-  linear("linear"),
-  easein("easein"),
-  easeout("easeout"),
-  easeinout("easeinout");
+    linear("linear"), easein("easein"), easeout("easeout"), easeinout("easeinout");
 
-  private String id;
+    private String id;
 
-  Easing(String id) {
-    this.id = id;
-  }
+    Easing(String id) {
+        this.id = id;
+    }
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  @Override
-  public String toString() {
-    return id;
-  }
+    @Override
+    public String toString() {
+        return id;
+    }
 }

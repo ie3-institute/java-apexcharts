@@ -15,10 +15,10 @@ package edu.ie3.vis.apex.options.plot;
 public class RadialBarPlotOptions implements PlotOptions {
 
   private final RadialBar radialBar;
-  private final Track track;
-  private final DataLabels dataLabels;
+  private final Track               track;
+  private final RadialBarDataLabels dataLabels;
 
-  public RadialBarPlotOptions(RadialBar radialBar, Track track, DataLabels dataLabels) {
+  public RadialBarPlotOptions(RadialBar radialBar, Track track, RadialBarDataLabels dataLabels) {
     this.radialBar = radialBar;
     this.track = track;
     this.dataLabels = dataLabels;
@@ -32,7 +32,7 @@ public class RadialBarPlotOptions implements PlotOptions {
     return track;
   }
 
-  public DataLabels getDataLabels() {
+  public RadialBarDataLabels getDataLabels() {
     return dataLabels;
   }
 }

@@ -12,14 +12,14 @@ package edu.ie3.vis.apex.options.plot;
  * @version 0.1
  * @since 19.01.20
  */
-public class DataLabels {
+public class RadialBarDataLabels {
 
   private final boolean show;
   private final NameOptions name;
   private final ValueOptions value;
   private final TotalOptions total;
 
-  public DataLabels(boolean show, NameOptions name, ValueOptions value, TotalOptions total) {
+  public RadialBarDataLabels(boolean show, NameOptions name, ValueOptions value, TotalOptions total) {
     this.show = show;
     this.name = name;
     this.value = value;

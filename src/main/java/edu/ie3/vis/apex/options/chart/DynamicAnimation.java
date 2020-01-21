@@ -7,26 +7,32 @@
 package edu.ie3.vis.apex.options.chart;
 
 /**
- * //ToDo: Class Description
+ * Allows the configuration of the animation when data is changed and chart is re-rendered
  *
  * @version 0.1
  * @since 14.01.20
  */
 public class DynamicAnimation {
 
-  private final Boolean enabled;
-  private final long speed;
+    private final Boolean enabled;
+    private final long    speed;
 
-  public DynamicAnimation(Boolean enabled, long speed) {
-    this.enabled = enabled;
-    this.speed = speed;
-  }
+    /**
+     * Standard constructor for dynamic animation
+     *
+     * @param enabled enable or disable dynamic animation
+     * @param speed   defines the speed at which dynamic animation runs whenever data changes
+     */
+    public DynamicAnimation(Boolean enabled, long speed) {
+        this.enabled = enabled;
+        this.speed = speed;
+    }
 
-  public Boolean getEnabled() {
-    return enabled;
-  }
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-  public long getSpeed() {
-    return speed;
-  }
+    public long getSpeed() {
+        return speed;
+    }
 }
