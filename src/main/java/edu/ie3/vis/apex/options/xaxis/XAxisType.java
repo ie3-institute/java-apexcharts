@@ -13,20 +13,22 @@ package edu.ie3.vis.apex.options.xaxis;
  * @since 14.01.20
  */
 public enum XAxisType {
-    category("category"), datetime("datetime"), numeric("numeric");
+  category("category"),
+  datetime("datetime"),
+  numeric("numeric");
 
-    private String id;
+  private String id;
 
-    XAxisType(String id) {
-        this.id = id;
-    }
+  XAxisType(String id) {
+    this.id = id;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    @Override
-    public String toString() {
-        return id;
-    }
+  @Override
+  public String toString() {
+    return id;
+  }
 }

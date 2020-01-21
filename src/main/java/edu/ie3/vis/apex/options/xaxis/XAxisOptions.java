@@ -9,7 +9,6 @@ package edu.ie3.vis.apex.options.xaxis;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Options that can be used for the customization of the x-axis of an axis chart
  *
@@ -18,32 +17,33 @@ import java.util.List;
  */
 public class XAxisOptions {
 
-    public static final XAxisOptions DEFAULT = new XAxisOptions(XAxisType.category, new ArrayList<>());
+  public static final XAxisOptions DEFAULT =
+      new XAxisOptions(XAxisType.category, new ArrayList<>());
 
-    private final XAxisType    type;
-    private final List<String> categories;
+  private final XAxisType type;
+  private final List<String> categories;
 
-    /**
-     * Standard constructor for x-axis options
-     *
-     * @param type       the type of the axis
-     * @param categories the categories that should be shown on the axis
-     */
-    public XAxisOptions(XAxisType type, List<String> categories) {
-        this.type = type;
-        this.categories = categories;
-    }
+  /**
+   * Standard constructor for x-axis options
+   *
+   * @param type the type of the axis
+   * @param categories the categories that should be shown on the axis
+   */
+  public XAxisOptions(XAxisType type, List<String> categories) {
+    this.type = type;
+    this.categories = categories;
+  }
 
-    public XAxisOptions(XAxisType type) {
-        this.type = type;
-        this.categories = new ArrayList<>();
-    }
+  public XAxisOptions(XAxisType type) {
+    this.type = type;
+    this.categories = new ArrayList<>();
+  }
 
-    public XAxisType getType() {
-        return type;
-    }
+  public XAxisType getType() {
+    return type;
+  }
 
-    public List<String> getCategories() {
-        return categories;
-    }
+  public List<String> getCategories() {
+    return categories;
+  }
 }

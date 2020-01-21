@@ -13,22 +13,31 @@ package edu.ie3.vis.apex.options.chart;
  * @since 13.01.20
  */
 public enum ChartType {
-    area("area"), line("line"), bar("bar"), radar("radar"), histogram("histogram"), pie("pie"), donut(
-                    "donut"), radialBar("radialBar"), scatter("scatter"), bubble("bubble"), heatmap(
-                    "heatmap"), candlestick("candlestick");
+  area("area"),
+  line("line"),
+  bar("bar"),
+  radar("radar"),
+  histogram("histogram"),
+  pie("pie"),
+  donut("donut"),
+  radialBar("radialBar"),
+  scatter("scatter"),
+  bubble("bubble"),
+  heatmap("heatmap"),
+  candlestick("candlestick");
 
-    private String id;
+  private String id;
 
-    ChartType(String id) {
-        this.id = id;
-    }
+  ChartType(String id) {
+    this.id = id;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    @Override
-    public String toString() {
-        return id;
-    }
+  @Override
+  public String toString() {
+    return id;
+  }
 }

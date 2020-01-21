@@ -23,13 +23,14 @@ public class ChartTitle {
 
   /**
    * Standard constructor for chart title
+   *
    * @param text the title text
    * @param align the text alignment
    * @param margin vertical spacing around the title text
    * @param offsetX left offset for title text
    * @param offsetY top offset for title text
-   * @param floating if set to true, it will take out the title text from the chart area
-   *                 and make it float on top of the chart.
+   * @param floating if set to true, it will take out the title text from the chart area and make it
+   *     float on top of the chart.
    */
   public ChartTitle(
       String text, TextAlignment align, long margin, long offsetX, long offsetY, boolean floating) {

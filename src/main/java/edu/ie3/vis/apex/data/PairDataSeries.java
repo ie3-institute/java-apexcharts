@@ -8,7 +8,6 @@ package edu.ie3.vis.apex.data;
 
 import java.util.List;
 
-
 /**
  * Representation of a data series with paired {@link Tuple2} elements
  *

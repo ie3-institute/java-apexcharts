@@ -1,3 +1,9 @@
+/*
+ * © 2020. TU Dortmund University,
+ * Institute of Energy Systems, Energy Efficiency and Energy Economics,
+ * Research group Distribution grid planning and operation
+ */
+
 package edu.ie3.vis.apex.options.zoom;
 
 /**
@@ -7,22 +13,22 @@ package edu.ie3.vis.apex.options.zoom;
  * @since 21.01.20
  */
 public enum ZoomType {
+  x("x"),
+  y("y"),
+  xy("xy");
 
-    x("x"), y("y"), xy("xy");
+  private String id;
 
-    private String id;
+  ZoomType(String id) {
+    this.id = id;
+  }
 
-    ZoomType(String id) {
-        this.id = id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return id;
-    }
-
+  @Override
+  public String toString() {
+    return id;
+  }
 }
