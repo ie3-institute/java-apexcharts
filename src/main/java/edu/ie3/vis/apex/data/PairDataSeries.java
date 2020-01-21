@@ -8,11 +8,12 @@ package edu.ie3.vis.apex.data;
 
 import java.util.List;
 
+
 /**
- * //ToDo: Class Description
+ * Representation of a data series with paired {@link Tuple2} elements
  *
- * @version 0.1
- * @since 13.01.20
+ * @param <X> type of x element, can be e.g. date strings or numerical values
+ * @param <Y> type of y element, normally numeric values
  */
 public class PairDataSeries<X extends Comparable<X>, Y extends Comparable<Y>> {
 

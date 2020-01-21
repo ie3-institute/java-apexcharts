@@ -8,27 +8,28 @@ package edu.ie3.vis.apex.data;
 
 import java.util.List;
 
+
 /**
- * //ToDo: Class Description
+ * Representation of a data series with double values
  *
  * @version 0.1
  * @since 14.01.20
  */
 public class SingleDataSeries {
 
-  private final String name;
-  private final List<Double> data;
+    private final String       name;
+    private final List<Double> data;
 
-  public SingleDataSeries(String name, List<Double> data) {
-    this.name = name;
-    this.data = data;
-  }
+    public SingleDataSeries(String name, List<Double> data) {
+        this.name = name;
+        this.data = data;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public List<Double> getData() {
-    return data;
-  }
+    public List<Double> getData() {
+        return data;
+    }
 }

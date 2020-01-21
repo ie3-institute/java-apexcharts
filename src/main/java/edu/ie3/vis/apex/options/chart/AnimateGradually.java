@@ -7,28 +7,43 @@
 package edu.ie3.vis.apex.options.chart;
 
 /**
- * //ToDo: Class Description
+ * Gradually animate one by one every data in the series instead of animating all at once
  *
  * @version 0.1
  * @since 14.01.20
  */
 public class AnimateGradually {
 
-  public static final AnimateGradually DISABLED = new AnimateGradually(false, 0L);
+    /**
+     * Animate Gradually disabled
+     */
+    public static final AnimateGradually DISABLED = new AnimateGradually(false, 0L);
 
-  private final Boolean enabled;
-  private final long delay;
+    /**
+     * Animate Gradually enabled with default delay
+     */
+    public static final AnimateGradually ENABLED = new AnimateGradually(true, 150L);
 
-  public AnimateGradually(Boolean enabled, long delay) {
-    this.enabled = enabled;
-    this.delay = delay;
-  }
+    private final Boolean enabled;
+    private final long    delay;
 
-  public Boolean getEnabled() {
-    return enabled;
-  }
+    /**
+     * Gradually animate one by one every data in the series instead of animating all at once. If {@link Animations}
+     * is disabled providing this parameter has no effect!
+     *
+     * @param enabled enable or disable gradual animation
+     * @param delay   speed at which gradual (one by one) animation runs
+     */
+    public AnimateGradually(Boolean enabled, long delay) {
+        this.enabled = enabled;
+        this.delay = delay;
+    }
 
-  public long getDelay() {
-    return delay;
-  }
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public long getDelay() {
+        return delay;
+    }
 }
