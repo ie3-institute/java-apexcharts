@@ -27,11 +27,19 @@ import org.apache.logging.log4j.Logger;
  */
 public class ChartFactory {
 
+
+  private static int i;
   private static final Logger logger = LogManager.getLogger(ChartFactory.class);
 
   private static final String APEX_CHARTS_URL = "https://cdn.jsdelivr.net/npm/apexcharts";
-  private static final String APEX_CHARTS_REACT_URL =
-      "https://cdn.jsdelivr.net/npm/react-apexcharts";
+  private static final String CHARTS_TEMPLATE = "<div id=\"chart$i\"></div>";
+  private String CHARTS ="";
+  private static final String CREATE_CHARTS_TEMPLATE = "      var chart$i = new ApexCharts(document.querySelector(\"#chart$i\"), options$i);";
+  private String OPTIONS ="";
+  private static final String OPTIONS_TEMPLATE = "      var options$i = $setOptions;";
+  private String CREATE_CHARTS ="";
+  private static final String RENDER_CHARTS_TEMPLATE = "      chart$i.render();";
+  private String RENDER_CHARTS ="";
 
   private static final String DEFAULT_TEMPLATE =
       "<!DOCTYPE html>\n"
@@ -44,19 +52,18 @@ public class ChartFactory {
           + "    <title>$htmlTitle</title>\n"
           + "\n"
           + "    <script src=\"$apexChartsUrl\"></script>\n"
-          + "    <script src=\"$apexChartsReactUrl\"></script>\n"
           + "\n"
           + "\n"
           + "</head>\n"
           + "<body>\n"
           + "\n"
-          + "<div id=\"chart\"></div>\n"
+          + "$chart\n"
           + "\n"
           + "<script>\n"
           + "\n"
-          + "      var options = $options\n"
-          + "      var chart = new ApexCharts(document.querySelector(\"#chart\"), options);\n"
-          + "      chart.render();\n"
+          + "$options\n"
+          + "$createChart\n"
+          + "$renderChart\n"
           + "\n"
           + "\n"
           + "    </script>\n"
@@ -68,22 +75,40 @@ public class ChartFactory {
 
   public void createSingleValuesChart(
       ChartTitle title,
-      Collection<PairDataSeries<String, Double>> series,
+      Collection<PairDataSeries<String, Double>> series, // TODO Using array, list etc. of Collection series
       ChartOptions chartOptions,
       StrokeOptions strokeOptions,
       String fileName) {
     // build the chart
+
+    // TODO For each Object in a Collection series - Array
+
     SingleValuesChart chart = new SingleValuesChart(title, series, chartOptions, strokeOptions);
 
     // serialize as json
     Gson g = new Gson();
     String options = g.toJson(chart).concat(";");
 
+    // build multiple divs etc. for graphs and data
+
+    for (i = 0; i < 4; i++) {
+      CHARTS = CHARTS.concat(CHARTS_TEMPLATE.replace("$i", i + "") + "\n");
+      OPTIONS = OPTIONS.concat(OPTIONS_TEMPLATE.replace("$i", i + "") + "\n");
+      CREATE_CHARTS = CREATE_CHARTS.concat(CREATE_CHARTS_TEMPLATE.replace("$i", i + "") + "\n");
+      RENDER_CHARTS = RENDER_CHARTS.concat(RENDER_CHARTS_TEMPLATE.replace("$i", i + "") + "\n");
+    }
+
+    // For each close
+
     // build the html string
+
     String htmlString = DEFAULT_TEMPLATE;
-    htmlString = htmlString.replace("$options", options);
+    htmlString = htmlString.replace("$chart", CHARTS);
+    htmlString = htmlString.replace("$options", OPTIONS);
+    htmlString = htmlString.replace("$createChart", CREATE_CHARTS);
+    htmlString = htmlString.replace("$renderChart", RENDER_CHARTS);
+    htmlString = htmlString.replace("$setOptions", options);
     htmlString = htmlString.replace("$apexChartsUrl", APEX_CHARTS_URL);
-    htmlString = htmlString.replace("$apexChartsReactUrl", APEX_CHARTS_REACT_URL);
     htmlString = htmlString.replace("$htmlTitle", title.getText());
 
     // save as new File
