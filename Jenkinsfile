@@ -80,6 +80,7 @@ def log(String level, String message) {
     println(p(level) + message)
 }
 
+// disable scanning
 if(isBranchIndexingCause())
     return
 
@@ -191,12 +192,6 @@ if (env.BRANCH_NAME == "master") {
         }
     } else {
         // merge mode
-        // disable scan
-//        if (params.pull_request_title == "") {
-//            currentBuild.result = 'SUCCESS'
-//            return
-//        }
-
         // merge into master
         // notify rocket chat about the started master branch deployment
         rocketSend attachments: [],
@@ -352,14 +347,6 @@ if (env.BRANCH_NAME == "master") {
         // resolve branch name and configure the project
         // which requires a node
         getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
-
-        // disable scan
-//        if (params.triggered != "true" && params.comment_body != "!test") {
-//
-//            log(i, "Scan mode. Doing nothing!")
-//           currentBuild.result = 'SUCCESS'
-//            return
-//        }
 
         // This displays colors using the 'xterm' ansi color map.
         ansiColor('xterm') {
