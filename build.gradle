@@ -5,20 +5,20 @@
 */
 
 plugins {
-    id "com.jfrog.artifactory" version "4.9.7"
-    id 'java' // java support
-    id 'groovy' // groovy support
-    id 'com.github.spotbugs' version '2.0.0' //code check, working on byte code
-    id 'com.diffplug.gradle.spotless' version '3.27.1'//code format
-    id "org.sonarqube" version "2.8" // sonarqube´
-    id 'pmd' // code check, working on source code
-    id 'jacoco' // java code coverage plugin
-    id 'maven-publish' // publish to a maven repo (local or mvn central, has to be defined)
+	id "com.jfrog.artifactory" version "4.9.7"
+	id 'java' // java support
+	id 'groovy' // groovy support
+	id 'com.github.spotbugs' version '2.0.0' //code check, working on byte code
+	id 'com.diffplug.gradle.spotless' version '3.27.1'//code format
+	id "org.sonarqube" version "2.8" // sonarqube´
+	id 'pmd' // code check, working on source code
+	id 'jacoco' // java code coverage plugin
+	id 'maven-publish' // publish to a maven repo (local or mvn central, has to be defined)
 }
 
 ext {
-    javaVersion = JavaVersion.VERSION_11
-    scriptsLocation = 'gradle' + File.separator + 'scripts' + File.separator //location of script plugins
+	javaVersion = JavaVersion.VERSION_11
+	scriptsLocation = 'gradle' + File.separator + 'scripts' + File.separator //location of script plugins
 }
 
 apply from: scriptsLocation + 'pmd.gradle'
@@ -30,29 +30,33 @@ apply from: scriptsLocation + 'checkJavaVersion.gradle'
 apply from: scriptsLocation + 'jacoco.gradle' // jacoco java code coverage
 
 repositories {
-    jcenter()
+	jcenter()
 }
 
 
 dependencies {
 
-    compile group: 'commons-io', name: 'commons-io', version: '2.6' // apache commons io
-    compile 'com.google.code.gson:gson:2.8.6' // java serialization, POJOs -> JSON
+	compile 'org.apache.logging.log4j:log4j-api:+' // log4j
+	compile 'org.apache.logging.log4j:log4j-core:+' // log4j
+	compile 'org.apache.logging.log4j:log4j-slf4j-impl:+' // log4j -> slf4j
 
-    // Use the latest Groovy version for Spock testing
-    testImplementation 'org.codehaus.groovy:groovy-all:2.5.8'
+	compile group: 'commons-io', name: 'commons-io', version: '2.6' // apache commons io
+	compile 'com.google.code.gson:gson:2.8.6' // java serialization, POJOs -> JSON
 
-    // Use the awesome Spock testing and specification framework even with Java
-    testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
-    testImplementation 'junit:junit:4.12'
+	// Use the latest Groovy version for Spock testing
+	testImplementation 'org.codehaus.groovy:groovy-all:2.5.8'
 
-    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:+'
-    implementation 'org.jetbrains:annotations:15.0'// find bugs in java programs
+	// Use the awesome Spock testing and specification framework even with Java
+	testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
+	testImplementation 'junit:junit:4.12'
+
+	spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:+'
+	implementation 'org.jetbrains:annotations:15.0'// find bugs in java programs
 
 }
 
 wrapper {
-    gradleVersion = '6.0.1'
+	gradleVersion = '6.0.1'
 }
 
 group = 'edu.ie3.vis'
@@ -64,54 +68,54 @@ targetCompatibility = javaVersion
 
 
 task sourcesJar(type: Jar) {
-    getArchiveClassifier().set('sources')
-    from(sourceSets.main.allSource)
+	getArchiveClassifier().set('sources')
+	from(sourceSets.main.allSource)
 }
 
 task javadocJar(type: Jar) {
-    getArchiveClassifier().set('javadoc')
-    from(javadoc.destinationDir)
+	getArchiveClassifier().set('javadoc')
+	from(javadoc.destinationDir)
 }
 
 if (project.hasProperty('user') && project.hasProperty('password')) {
-    artifactory {
-        contextUrl = "https://simona.ie3.e-technik.tu-dortmund.de/artifactory"
-        publish {
-            repository {
-                repoKey = 'libs-snapshot-local'
-                username = project.getProperty('user')
-                password = project.getProperty('password')
-                maven = true
-            }
-            defaults {
-                publications('mavenJava')
-            }
-        }
-    }
+	artifactory {
+		contextUrl = "https://simona.ie3.e-technik.tu-dortmund.de/artifactory"
+		publish {
+			repository {
+				repoKey = 'libs-snapshot-local'
+				username = project.getProperty('user')
+				password = project.getProperty('password')
+				maven = true
+			}
+			defaults {
+				publications('mavenJava')
+			}
+		}
+	}
 }
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'java-apexcharts'
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            def releasesRepoUrl = "$buildDir/repos/releases"
-            def snapshotsRepoUrl = "$buildDir/repos/snapshots"
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-        }
-    }
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId = 'java-apexcharts'
+			from components.java
+			artifact sourcesJar
+			artifact javadocJar
+			versionMapping {
+				usage('java-api') {
+					fromResolutionOf('runtimeClasspath')
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			def releasesRepoUrl = "$buildDir/repos/releases"
+			def snapshotsRepoUrl = "$buildDir/repos/snapshots"
+			url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+		}
+	}
 }

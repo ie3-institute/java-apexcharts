@@ -5,7 +5,7 @@ sonarqube {
 		property 'sonar.verbose', 'true' // verbose mode
 		property 'sonar.sourceEncoding', 'UTF-8' // encoding
 		property 'sonar.sources', ['src/main/java'] // src dirs
-		//property "sonar.tests", ['src/test/resources'] // test src dirs
+		property "sonar.tests", ['src/test/groovy'] // test src dirs
 
 		// reports stuff (for all languages)
 		property 'sonar.junit.reportPaths', ['build/test-results/allTests'] // Comma-delimited list of paths to Surefire XML-format reports.
