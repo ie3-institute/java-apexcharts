@@ -8,7 +8,7 @@ package edu.ie3.vis.apex;
 
 import com.google.gson.Gson;
 import edu.ie3.vis.apex.data.PairDataSeries;
-import edu.ie3.vis.apex.options.chart.*;
+import edu.ie3.vis.apex.options.chart.ChartOptions;
 import edu.ie3.vis.apex.options.stroke.StrokeOptions;
 import edu.ie3.vis.apex.options.title.ChartTitle;
 import java.io.File;
@@ -87,8 +87,8 @@ public class ChartFactory {
     htmlString = htmlString.replace("$htmlTitle", title.getText());
 
     // save as new File
-    if (!fileName.endsWith(".html")) fileName = fileName + ".html";
-    File newHtmlFile = new File(fileName);
+    String outputFileName = !fileName.endsWith(".html") ? fileName + ".html" : fileName;
+    File newHtmlFile = new File(outputFileName);
     try {
       FileUtils.writeStringToFile(newHtmlFile, htmlString, StandardCharsets.UTF_8);
     } catch (IOException e) {

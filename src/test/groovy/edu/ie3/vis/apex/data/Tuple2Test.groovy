@@ -9,7 +9,7 @@ class Tuple2Test extends Specification {
         Tuple2<Double, Double> testTuple = new Tuple2(2.0, 3.0)
 
         expect: "when x is requested, the correct x should be returned"
-        testTuple.getX() == 2.0
+        testTuple.x == 2.0
     }
 
     def "A Tuple2 should return y correctly if requested to do so"() {
@@ -17,14 +17,14 @@ class Tuple2Test extends Specification {
         Tuple2<Double, Double> testTuple = new Tuple2(2.0, 3.0)
 
         expect: "when y is requested, the correct x should be returned"
-        testTuple.getY() == 3.0
+        testTuple.y == 3.0
     }
 
     def "Two valid tuples should always be compared against their x values"() {
         given: "two valid tuples in a list"
         Tuple2<Double, Double> testTuple1 = new Tuple2(100.0, 3.0)
         Tuple2<Double, Double> testTuple2 = new Tuple2(3.0, 3.0)
-        ArrayList<Tuple2<Double,Double>> tupleList = new ArrayList<>()
+        ArrayList<Tuple2<Double,Double>> tupleList = []
         tupleList.add(testTuple1)
         tupleList.add(testTuple2)
 
@@ -40,7 +40,7 @@ class Tuple2Test extends Specification {
         Tuple2<Double, Double> testTuple2 = new Tuple2(100.0, 3.0)
 
         expect: "equals should return true"
-        testTuple1.equals(testTuple2)
+        testTuple1 == testTuple2
 
     }
 
