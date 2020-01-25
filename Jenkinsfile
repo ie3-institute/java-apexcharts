@@ -83,10 +83,15 @@ def log(String level, String message) {
 
 // disable scanning but load config parameters before
 if (isBranchIndexingCause()) {
-    if (env.BRANCH_NAME == "master") {
-        getMasterBranchProps()
-    } else {
-        getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
+    println(env.BUILD_NUMBER)
+    println(currentBuild)
+    if (env.BUILD_NUMBER == 1) {
+        if (env.BRANCH_NAME == "master") {
+            getMasterBranchProps()
+        } else {
+            getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
+        }
+        currentBuild.result = 'FAILURE'
     }
     return
 }
