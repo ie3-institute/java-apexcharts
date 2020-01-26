@@ -14,7 +14,7 @@ package edu.ie3.vis.apex.options.zoom;
  */
 public class ZoomOptions {
 
-  public static ZoomOptions DEFAULT_X_WITH_AUTOSCALE =
+  public static final ZoomOptions DEFAULT_X_WITH_AUTOSCALE =
       new ZoomOptions(true, ZoomType.x, true, ZoomedAreaOptions.TRANSPARENT);
 
   private final Boolean enabled;

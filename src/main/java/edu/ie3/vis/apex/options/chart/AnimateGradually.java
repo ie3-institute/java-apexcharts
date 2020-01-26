@@ -18,7 +18,7 @@ public class AnimateGradually {
   public static final AnimateGradually DISABLED = new AnimateGradually(false, 0L);
 
   /** Animate Gradually enabled with default delay */
-  public static final AnimateGradually ENABLED = new AnimateGradually(true, 150L);
+  public static final AnimateGradually ENABLED_DEFAULT_VALUES = new AnimateGradually(true, 150L);
 
   private final Boolean enabled;
   private final long delay;
