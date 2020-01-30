@@ -16,12 +16,13 @@ import java.nio.file.Paths
 
 class ChartFactoryTest extends Specification {
 
-    def "Factory should create a valid .html file"() {
+
+    def "ChartFactory should create a valid html file"() {
         given: "Graph data"
 
-        ArrayList<PairDataSeries<String, Double>> testSeries = new ArrayList<>()
+        ArrayList<PairDataSeries<String, Double>> testSeries = []
 
-        ArrayList<Tuple2<String, Double>> testDataList = new ArrayList<>()
+        ArrayList<Tuple2<String, Double>> testDataList = []
 
         Tuple2<String, Double> data =
                 new Tuple2<>("2020-01-30 00:00", 1)
@@ -47,7 +48,7 @@ class ChartFactoryTest extends Specification {
                 SingleStrokeOptions.DEFAULT,
                 "src/test/resources/graphs/test/testChart.html")
 
-        expect: "testChart.html should match the given data"
+        expect: "created testChart html should match the given data"
         String testChart = new String(Files.readAllBytes(Paths.get("src/test/resources/graphs/test/testChart.html")))
         String compareChart = new String(Files.readAllBytes(Paths.get("src/test/resources/graphs/compareChart.html")))
 
