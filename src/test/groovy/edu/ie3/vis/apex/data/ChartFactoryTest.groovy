@@ -59,7 +59,7 @@ class ChartFactoryTest extends Specification {
 
     }
 
-    def "test throws ApexChartsException (if PairedValuesChart.ChartType == line)"(){
+    def "test throws ApexChartsException (if PairedValuesChart.ChartType == line)"() {
         given: "graph data"
         ArrayList<PairDataSeries<String, Double>> testSeries = []
 

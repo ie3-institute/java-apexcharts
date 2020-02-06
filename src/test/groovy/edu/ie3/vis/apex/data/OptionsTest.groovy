@@ -23,8 +23,6 @@ import spock.lang.Specification
 
 import java.awt.Color
 
-import static edu.ie3.vis.apex.util.ApexUtil.rgbToHex
-
 class OptionsTest extends Specification {
 
     def "test all chart options"() {
