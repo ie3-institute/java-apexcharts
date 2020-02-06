@@ -103,10 +103,10 @@ class OptionsTest extends Specification {
 
         where:
 
-        showInput   | LineCurveInput           | MultiLineCurveInput    | LineCapInput  || showOutput       | LineCurveOutput   | MultiLineCurveOutput  | LineCapOutput
-        true        | LineCurve.smooth         | [LineCurve.smooth]     | LineCap.butt  || "true"           | "smooth"          | "[smooth]"            | "butt"
-        false       | LineCurve.straight       | [LineCurve.straight]   | LineCap.round || "false"          | "straight"        | "[straight]"          | "round"
-        true        | LineCurve.stepline       | [LineCurve.stepline]   | LineCap.square|| "true"           | "stepline"        | "[stepline]"          | "square"
+        showInput   | LineCurveInput           | MultiLineCurveInput    | LineCapInput      || showOutput       | LineCurveOutput   | MultiLineCurveOutput  | LineCapOutput
+        true        | LineCurve.smooth         | [LineCurve.smooth]     | LineCap.butt      || "true"           | "smooth"          | "[smooth]"            | "butt"
+        false       | LineCurve.straight       | [LineCurve.straight]   | LineCap.round     || "false"          | "straight"        | "[straight]"          | "round"
+        true        | LineCurve.stepline       | [LineCurve.stepline]   | LineCap.square    || "true"           | "stepline"        | "[stepline]"          | "square"
     }
 
     def "test all title options"() {
@@ -155,9 +155,9 @@ class OptionsTest extends Specification {
         where:
 
         typeInput           | categoriesInput   || typeOutput   | categoriesOutput
-        XAxisType.category  | new ArrayList<>() || "category"   | "[]"
-        XAxisType.datetime  | new ArrayList<>() || "datetime"   | "[]"
-        XAxisType.numeric   | new ArrayList<>() || "numeric"    | "[]"
+        XAxisType.category  | []                || "category"   | "[]"
+        XAxisType.datetime  | []                || "datetime"   | "[]"
+        XAxisType.numeric   | []                || "numeric"    | "[]"
 
 
     }
