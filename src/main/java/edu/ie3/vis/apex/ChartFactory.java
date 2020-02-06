@@ -30,8 +30,6 @@ public class ChartFactory {
   private static final Logger logger = LogManager.getLogger(ChartFactory.class);
 
   private static final String APEX_CHARTS_URL = "https://cdn.jsdelivr.net/npm/apexcharts";
-  private static final String APEX_CHARTS_REACT_URL =
-      "https://cdn.jsdelivr.net/npm/react-apexcharts";
 
   private static final String DEFAULT_TEMPLATE =
       "<!DOCTYPE html>\n"
@@ -44,7 +42,6 @@ public class ChartFactory {
           + "    <title>$htmlTitle</title>\n"
           + "\n"
           + "    <script src=\"$apexChartsUrl\"></script>\n"
-          + "    <script src=\"$apexChartsReactUrl\"></script>\n"
           + "\n"
           + "\n"
           + "</head>\n"
@@ -83,7 +80,6 @@ public class ChartFactory {
     String htmlString = DEFAULT_TEMPLATE;
     htmlString = htmlString.replace("$options", options);
     htmlString = htmlString.replace("$apexChartsUrl", APEX_CHARTS_URL);
-    htmlString = htmlString.replace("$apexChartsReactUrl", APEX_CHARTS_REACT_URL);
     htmlString = htmlString.replace("$htmlTitle", title.getText());
 
     // save as new File
