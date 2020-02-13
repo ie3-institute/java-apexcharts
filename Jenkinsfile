@@ -36,7 +36,7 @@ def sshCredentialsId = "5470eb14-b7a1-4247-baba-1e0f9a907666"
 //// define and setjava version ////
 //// requires the java version to be set in the internal jenkins java version management
 //// use identifier accordingly
-def javaVersionId = 'jdk-11'
+def javaVersionId = 'jdk-8'
 
 //// set java version method (needs node{} for execution)
 def setJavaVersion(javaVersionId) {
