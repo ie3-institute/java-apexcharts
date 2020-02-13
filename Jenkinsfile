@@ -82,19 +82,19 @@ def log(String level, String message) {
 }
 
 // disable scanning but load config parameters before
-if (isBranchIndexingCause()) {
-    println(env.BUILD_NUMBER)
-    println(currentBuild)
-    if (env.BUILD_NUMBER == 1) {
-        if (env.BRANCH_NAME == "master") {
-            getMasterBranchProps()
-        } else {
-            getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
-        }
-        currentBuild.result = 'FAILURE'
-    }
-    return
-}
+//if (isBranchIndexingCause()) {
+//    println(env.BUILD_NUMBER)
+//    println(currentBuild)
+//    if (env.BUILD_NUMBER == 1) {
+//        if (env.BRANCH_NAME == "master") {
+//            getMasterBranchProps()
+//        } else {
+//            getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
+//        }
+//        currentBuild.result = 'FAILURE'
+//    }
+//    return
+//}
 
 /////////////////////////
 // master branch script
