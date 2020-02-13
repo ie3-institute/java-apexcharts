@@ -36,7 +36,7 @@ def sshCredentialsId = "5470eb14-b7a1-4247-baba-1e0f9a907666"
 //// define and setjava version ////
 //// requires the java version to be set in the internal jenkins java version management
 //// use identifier accordingly
-def javaVersionId = 'jdk-11'
+def javaVersionId = 'jdk-8'
 
 //// set java version method (needs node{} for execution)
 def setJavaVersion(javaVersionId) {
@@ -82,19 +82,19 @@ def log(String level, String message) {
 }
 
 // disable scanning but load config parameters before
-if (isBranchIndexingCause()) {
-    println(env.BUILD_NUMBER)
-    println(currentBuild)
-    if (env.BUILD_NUMBER == 1) {
-        if (env.BRANCH_NAME == "master") {
-            getMasterBranchProps()
-        } else {
-            getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
-        }
-        currentBuild.result = 'FAILURE'
-    }
-    return
-}
+//if (isBranchIndexingCause()) {
+//    println(env.BUILD_NUMBER)
+//    println(currentBuild)
+//    if (env.BUILD_NUMBER == 1) {
+//        if (env.BRANCH_NAME == "master") {
+//            getMasterBranchProps()
+//        } else {
+//            getFeatureBranchProps(resolveBranchNo(env.BRANCH_NAME))
+//        }
+//        currentBuild.result = 'FAILURE'
+//    }
+//    return
+//}
 
 /////////////////////////
 // master branch script

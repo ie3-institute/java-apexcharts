@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TestChart</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script>
+
+      var options = {"series":[{"name":"TestData","data":[1]}],"xaxis":{"type":"category","categories":["2020-01-30 00:00"]},"title":{"text":"TestChart","align":"left","margin":10,"offsetX":0,"offsetY":0,"floating":false},"chart":{"type":"line","stacked":false,"height":"550px","zoom":{"enabled":true,"type":"x","autoScaleYaxis":true,"zoomedArea":{"fill":{"color":"#ffffff","opacity":0.0},"stroke":{"color":"#ffffff","opacity":0.0,"width":0}}},"animations":{"enabled":true,"easing":"linear","speed":500,"animateGradually":{"enabled":false,"delay":0}},"dynamicAnimation":{"enabled":false,"speed":0}},"stroke":{"curve":"smooth","show":true,"lineCap":"butt","width":2.0,"dashArray":[0]}};
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
+
+
+    </script>
+
+
+</body>
+
+</html>
