@@ -41,13 +41,13 @@ class OptionsTest extends Specification {
         testChart.type.toString() == typeOutput
         testChart.stacked.toString() == stackedOutput
         testChart.height.toString() == heightOutput
-        testChart.getAnimations().enabled.toString() == animationOutput
-        testChart.getAnimations().easing.toString() == easingOutput
-        testChart.getAnimations().speed.toString() == speedOutput
-        testChart.getAnimations().getAnimateGradually().enabled.toString() == graduallyOutput
-        testChart.getAnimations().getAnimateGradually().delay.toString() == delayOutput
-        testChart.getDynamicAnimation().enabled.toString() == dynOutput
-        testChart.getDynamicAnimation().speed.toString() == dynSpeedOutput
+        testChart.animations.enabled.toString() == animationOutput
+        testChart.animations.easing.toString() == easingOutput
+        testChart.animations.speed.toString() == speedOutput
+        testChart.animations.animateGradually.enabled.toString() == graduallyOutput
+        testChart.animations.animateGradually.delay.toString() == delayOutput
+        testChart.dynamicAnimation.enabled.toString() == dynOutput
+        testChart.dynamicAnimation.speed.toString() == dynSpeedOutput
 
 
         where:
@@ -88,7 +88,7 @@ class OptionsTest extends Specification {
         expect: "get the right options"
 
         testSingleStroke.show.toString() == showOutput
-        testSingleStroke.curve.getId() == LineCurveOutput
+        testSingleStroke.curve.id == LineCurveOutput
         testSingleStroke.lineCap.toString() == LineCapOutput
 
         testSingleStroke.width.toString() == "1.0"
@@ -144,10 +144,10 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testXAxisOptions.type.getId() == typeOutput
+        testXAxisOptions.type.id == typeOutput
         testXAxisOptions.categories.toString() == categoriesOutput
 
-        testXAxisOptionsType.type.getId() == typeOutput
+        testXAxisOptionsType.type.id == typeOutput
 
 
         where:
@@ -173,14 +173,14 @@ class OptionsTest extends Specification {
         expect: "get the right options"
 
         testZoom.enabled.toString() == enabledOutput
-        testZoom.type.getId() == typeOutput
+        testZoom.type.id == typeOutput
         testZoom.autoScaleYaxis.toString() == autoScaleOutput
 
-        testZoom.getZoomedArea().fill.color.toString() == fillColor
-        testZoom.getZoomedArea().fill.opacity.toString() == fillOpacity
-        testZoom.getZoomedArea().stroke.opacity.toString() == strokeOpacity
-        testZoom.getZoomedArea().stroke.color.toString() == strokeColor
-        testZoom.getZoomedArea().stroke.width.toString() == strokeWidth
+        testZoom.zoomedArea.fill.color.toString() == fillColor
+        testZoom.zoomedArea.fill.opacity.toString() == fillOpacity
+        testZoom.zoomedArea.stroke.opacity.toString() == strokeOpacity
+        testZoom.zoomedArea.stroke.color.toString() == strokeColor
+        testZoom.zoomedArea.stroke.width.toString() == strokeWidth
 
 
 
