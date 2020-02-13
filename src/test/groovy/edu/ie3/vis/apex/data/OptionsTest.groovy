@@ -38,16 +38,16 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testChart.getType().toString() == typeOutput
-        testChart.getStacked().toString() == stackedOutput
-        testChart.getHeight().toString() == heightOutput
-        testChart.getAnimations().getEnabled().toString() == animationOutput
-        testChart.getAnimations().getEasing().toString() == easingOutput
-        testChart.getAnimations().getSpeed().toString() == speedOutput
-        testChart.getAnimations().getAnimateGradually().getEnabled().toString() == graduallyOutput
-        testChart.getAnimations().getAnimateGradually().getDelay().toString() == delayOutput
-        testChart.getDynamicAnimation().getEnabled().toString() == dynOutput
-        testChart.getDynamicAnimation().getSpeed().toString() == dynSpeedOutput
+        testChart.type.toString() == typeOutput
+        testChart.stacked.toString() == stackedOutput
+        testChart.height.toString() == heightOutput
+        testChart.getAnimations().enabled.toString() == animationOutput
+        testChart.getAnimations().easing.toString() == easingOutput
+        testChart.getAnimations().speed.toString() == speedOutput
+        testChart.getAnimations().getAnimateGradually().enabled.toString() == graduallyOutput
+        testChart.getAnimations().getAnimateGradually().delay.toString() == delayOutput
+        testChart.getDynamicAnimation().enabled.toString() == dynOutput
+        testChart.getDynamicAnimation().speed.toString() == dynSpeedOutput
 
 
         where:
@@ -87,16 +87,16 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testSingleStroke.isShow().toString() == showOutput
-        testSingleStroke.getCurve().getId() == LineCurveOutput
-        testSingleStroke.getLineCap().toString() == LineCapOutput
+        testSingleStroke.show.toString() == showOutput
+        testSingleStroke.curve.getId() == LineCurveOutput
+        testSingleStroke.lineCap.toString() == LineCapOutput
 
-        testSingleStroke.getWidth().toString() == "1.0"
-        testSingleStroke.getDashArray().toString() == "[0]"
+        testSingleStroke.width.toString() == "1.0"
+        testSingleStroke.dashArray.toString() == "[0]"
 
-        testMultiStroke.isShow().toString() == showOutput
-        testMultiStroke.getCurve().toString() == MultiLineCurveOutput
-        testMultiStroke.getLineCap().toString() == LineCapOutput
+        testMultiStroke.show.toString() == showOutput
+        testMultiStroke.curve.toString() == MultiLineCurveOutput
+        testMultiStroke.lineCap.toString() == LineCapOutput
 
 
         where:
@@ -121,12 +121,12 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testTitle.getText() == "TestTitle"
-        testTitle.getAlign().toString() == "center"
-        testTitle.getMargin().toString() == "15"
-        testTitle.getOffsetX().toString() == "50"
-        testTitle.getOffsetY().toString() == "50"
-        testTitle.isFloating().toString() == "true"
+        testTitle.text == "TestTitle"
+        testTitle.align.toString() == "center"
+        testTitle.margin.toString() == "15"
+        testTitle.offsetX.toString() == "50"
+        testTitle.offsetY.toString() == "50"
+        testTitle.floating.toString() == "true"
 
     }
 
@@ -144,10 +144,10 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testXAxisOptions.getType().getId() == typeOutput
-        testXAxisOptions.getCategories().toString() == categoriesOutput
+        testXAxisOptions.type.getId() == typeOutput
+        testXAxisOptions.categories.toString() == categoriesOutput
 
-        testXAxisOptionsType.getType().getId() == typeOutput
+        testXAxisOptionsType.type.getId() == typeOutput
 
 
         where:
@@ -172,15 +172,15 @@ class OptionsTest extends Specification {
 
         expect: "get the right options"
 
-        testZoom.getEnabled().toString() == enabledOutput
-        testZoom.getType().getId() == typeOutput
-        testZoom.isAutoScaleYaxis().toString() == autoScaleOutput
+        testZoom.enabled.toString() == enabledOutput
+        testZoom.type.getId() == typeOutput
+        testZoom.autoScaleYaxis.toString() == autoScaleOutput
 
-        testZoom.getZoomedArea().getFill().getColor().toString() == fillColor
-        testZoom.getZoomedArea().getFill().getOpacity().toString() == fillOpacity
-        testZoom.getZoomedArea().getStroke().getOpacity().toString() == strokeOpacity
-        testZoom.getZoomedArea().getStroke().getColor().toString() == strokeColor
-        testZoom.getZoomedArea().getStroke().getWidth().toString() == strokeWidth
+        testZoom.getZoomedArea().fill.color.toString() == fillColor
+        testZoom.getZoomedArea().fill.opacity.toString() == fillOpacity
+        testZoom.getZoomedArea().stroke.opacity.toString() == strokeOpacity
+        testZoom.getZoomedArea().stroke.color.toString() == strokeColor
+        testZoom.getZoomedArea().stroke.width.toString() == strokeWidth
 
 
 
