@@ -91,4 +91,26 @@ public class ChartFactory {
       logger.throwing(e);
     }
   }
+
+  public JApexChart createSingleValuesChart(
+      ChartTitle title,
+      Collection<PairDataSeries<String, Double>> series,
+      ChartOptions chartOptions,
+      StrokeOptions strokeOptions) {
+
+    // build the chart
+    SingleValuesChart chart = new SingleValuesChart(title, series, chartOptions, strokeOptions);
+
+    // serialize as json
+    Gson g = new Gson();
+    String options = g.toJson(chart).concat(";");
+
+    // build the html string
+    String htmlString = DEFAULT_TEMPLATE;
+    htmlString = htmlString.replace("$options", options);
+    htmlString = htmlString.replace("$apexChartsUrl", APEX_CHARTS_URL);
+    htmlString = htmlString.replace("$htmlTitle", title.getText());
+
+    return new JApexChart(chart, htmlString);
+  }
 }

@@ -11,12 +11,13 @@ import edu.ie3.vis.apex.options.stroke.StrokeOptions;
 import edu.ie3.vis.apex.options.title.ChartTitle;
 
 /**
- * //ToDo: Class Description
+ * Internal API for ApexCharts. For the resulting ApexChart objects from the ChartFactory refer to
+ * {@link JApexChart}
  *
  * @version 0.1
  * @since 14.01.20
  */
-public abstract class ApexChart {
+abstract class ApexChart {
 
   private final ChartTitle title;
   private final ChartOptions chart;
