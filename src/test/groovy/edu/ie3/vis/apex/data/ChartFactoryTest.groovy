@@ -91,14 +91,14 @@ class ChartFactoryTest extends Specification {
 
         expect: "created testChart html should match the given data"
 
-        test.getApexChart().getTitle().getText() == "TestJApexChart"
-        test.getApexChart().getStroke().getWidth().toBigDecimal() == 2.0
-        test.getApexChart().getChart().getHeight() == "550px"
+        test.apexChart.title.text == "TestJApexChart"
+        test.apexChart.stroke.width.toBigDecimal() == 2.0
+        test.apexChart.chart.height == "550px"
 
-        def expectedSplitted = new String(Files.readAllBytes(Paths.get("src/test/resources/graphs/compareChart.html"))).split("\n")
-        def actualSplitted = test.getApexChartString().split("\n")
-        for(int i = 0; i < expectedSplitted.length; i++) {
-            expectedSplitted[i] == actualSplitted[i]
+        def expectedSplit = new String(Files.readAllBytes(Paths.get("src/test/resources/graphs/compareChart.html"))).split("\n")
+        def actualSplit = test.apexChartString.split("\n")
+        for (int i = 0; i < expectedSplit.length; i++) {
+            expectedSplit[i] == actualSplit[i]
         }
     }
 
