@@ -59,6 +59,45 @@ class ChartFactoryTest extends Specification {
 
     }
 
+    def "ChartFactory should return JApex Chart"() {
+        given: "Graph data"
+
+        ArrayList<PairDataSeries<String, Double>> testSeries = []
+
+        ArrayList<Tuple2<String, Double>> testDataList = []
+
+        Tuple2<String, Double> data =
+                new Tuple2<>("2020-01-30 00:00", 1)
+
+        testDataList.add(data)
+
+
+        Collections.sort(testDataList)
+        PairDataSeries<String, Double> testDataSeries = new PairDataSeries<>("TestData", testDataList)
+        testSeries.add(testDataSeries)
+
+
+        ChartFactory testChartFactory = new ChartFactory()
+        def test = testChartFactory.createSingleValuesChart(
+                new ChartTitle("TestJApexChart"),
+                testSeries,
+                new ChartOptions(
+                        ChartType.line,
+                        false,
+                        550,
+                        ZoomOptions.DEFAULT_X_WITH_AUTOSCALE,
+                        new Animations(true, Easing.linear, 500L, AnimateGradually.DISABLED)),
+                SingleStrokeOptions.DEFAULT)
+
+        expect: "created testChart html should match the given data"
+
+        def expectedSplitted = new String(Files.readAllBytes(Paths.get("src/test/resources/graphs/compareChart.html"))).split("\n")
+        def actualSplitted = test.getApexChartString().split("\n")
+        for(int i = 0; i < expectedSplitted.length; i++) {
+            expectedSplitted[i] == actualSplitted[i]
+        }
+    }
+
     def "test throws ApexChartsException (if PairedValuesChart.ChartType == line)"() {
         given: "graph data"
         ArrayList<PairDataSeries<String, Double>> testSeries = []
