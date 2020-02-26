@@ -26,13 +26,17 @@ def sonarqubeProjectKey = "edu.ie3.vis:java-apexcharts"
 //// http://JENKINS_URL/generic-webhook-trigger/invoke?token=<webhookTriggerToken>
 webhookTriggerToken = "b0ba1564ca8c4d12ff74bf9b160d2e99c1bauhk86"
 
-//// jenkins artifactory credentials
-//// requires the credentials to be stored in the internal jenkins credentials keystore
-def artifactoryCredentialsId = "0bafad7b-a080-4271-abac-b45ea0f3209f"
-
 //// internal jenkins credentials link for git ssh keys
 //// requires the ssh key to be stored in the internal jenkins credentials keystore
 def sshCredentialsId = "5470eb14-b7a1-4247-baba-1e0f9a907666"
+
+//// internal maven central credentials
+def mavenCentralCredentialsId = "87bfb2d4-7613-4816-9fe1-70dfd7e6dec2"
+
+def mavenCentralSignKeyFileId = "dc96216c-d20a-48ff-98c0-1c7ba096d08d"
+
+def mavenCentralSignKeyId = "a1357827-1516-4fa2-ab8e-72cdea07a692"
+
 //// define and setjava version ////
 //// requires the java version to be set in the internal jenkins java version management
 //// use identifier accordingly
@@ -53,7 +57,7 @@ def gradleTasks = "--refresh-dependencies clean spotlessCheck pmdMain pmdTest sp
 def mainProjectGradleTasks = "jacocoTestReport jacocoTestCoverageVerification" // additional tasks that are only executed on project 0 (== main project)
 // if you need additional tasks for deployment add them here
 // NOTE: artifactory task with credentials will be added below
-def deployGradleTasks = "javadocJar sourcesJar "
+def deployGradleTasks = ""
 
 //// error message catch variable
 String stageErrorMessage = "Caught error without setting the errorMessage -> new error!"
@@ -117,12 +121,11 @@ if (env.BRANCH_NAME == "master") {
                 try {
                     // set java version
                     setJavaVersion(javaVersionId)
-
                     // get the artifactory credentials stored in the jenkins secure keychain
-                    withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: artifactoryCredentialsId,
-                                      usernameVariable: 'artifactory_username', passwordVariable: 'artifactory_password']]) {
-
-                        deployGradleTasks = "--refresh-dependencies clean allTests " + deployGradleTasks + "artifactoryPublish -Puser=${env.artifactory_username} -Ppassword=${env.artifactory_password}"
+                    withCredentials([usernamePassword(credentialsId: mavenCentralCredentialsId, usernameVariable: 'mavencentral_username', passwordVariable: 'mavencentral_password'),
+                                     file(credentialsId: mavenCentralSignKeyFileId, variable: 'mavenCentralKeyFile'),
+                                     usernamePassword(credentialsId: mavenCentralSignKeyId, passwordVariable: 'signingPassword', usernameVariable: 'signingKeyId')]) {
+                        deployGradleTasks = "--refresh-dependencies clean allTests " + deployGradleTasks + "publish -Puser=${env.mavencentral_username} -Ppassword=${env.mavencentral_password} -Psigning.keyId=${env.signingKeyId} -Psigning.password=${env.signingPassword} -Psigning.secretKeyRingFile=${env.mavenCentralKeyFile}"
 
                         stage('checkout from scm') {
                             // first we try to get branches from each repo
@@ -141,7 +144,7 @@ if (env.BRANCH_NAME == "master") {
                         }
 
                         stage('deploy') {
-                            log(i, "Deploying ${projects.get(0)} to artifactory ...")
+                            log(i, "Deploying ${projects.get(0)} to maven central ...")
                             gradle("-p ${projects.get(0)} ${deployGradleTasks}")
 
                             deployedArtifacts = "${projects.get(0)}, "
@@ -154,7 +157,7 @@ if (env.BRANCH_NAME == "master") {
                          */
                         stage('post processing') {
                             // publish reports
-                            publishReports()
+                            // publishReports()
 
                             // notify rocket chat about success
                             String buildMode = "deploy"
@@ -173,6 +176,8 @@ if (env.BRANCH_NAME == "master") {
                             // set build to successfull
                             currentBuild.result = 'SUCCESS'
                         }
+
+
                     }
 
                 } catch (Exception exc) {
@@ -244,7 +249,7 @@ if (env.BRANCH_NAME == "master") {
                     }
 
                     // the first stage should always be the mainProject -> if it fails we can skip the rest!
-                    stage("gradle allTests ${projects.get(0)} with included builds") {
+                    stage("gradle allTests ${projects.get(0)}") {
 
                         // display java version
                         sh "java -version"
@@ -276,12 +281,13 @@ if (env.BRANCH_NAME == "master") {
                      */
                     stage('deploy') {
                         // get the artifactory credentials stored in the jenkins secure keychain
-                        withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: artifactoryCredentialsId,
-                                          usernameVariable: 'artifactory_username', passwordVariable: 'artifactory_password']]) {
+                        withCredentials([usernamePassword(credentialsId: mavenCentralCredentialsId, usernameVariable: 'mavencentral_username', passwordVariable: 'mavencentral_password'),
+                                         file(credentialsId: mavenCentralSignKeyFileId, variable: 'mavenCentralKeyFile'),
+                                         usernamePassword(credentialsId: mavenCentralSignKeyId, passwordVariable: 'signingPassword', usernameVariable: 'signingKeyId')]) {
+                            deployGradleTasks = "--refresh-dependencies clean allTests " + deployGradleTasks + "publish -Puser=${env.mavencentral_username} -Ppassword=${env.mavencentral_password} -Psigning.keyId=${env.signingKeyId} -Psigning.password=${env.signingPassword} -Psigning.secretKeyRingFile=${env.mavenCentralKeyFile}"
 
-                            deployGradleTasks = deployGradleTasks + "artifactoryPublish -Puser=${env.artifactory_username} -Ppassword=${env.artifactory_password}"
 
-                            log(i, "Deploying ${projects.get(0)} to artifactory ...")
+                            log(i, "Deploying ${projects.get(0)} to maven central ...")
                             gradle("-p ${projects.get(0)} --parallel ${deployGradleTasks}")
 
                             deployedArtifacts = "${projects.get(0)}, "
@@ -419,7 +425,7 @@ if (env.BRANCH_NAME == "master") {
 
                 }
                 // the first stage should always be the mainProject -> if it fails we can skip the rest!
-                stage("gradle allTests ${projects.get(0)} with included builds") {
+                stage("gradle allTests ${projects.get(0)}") {
 
                     // display java version
                     sh "java -version"
