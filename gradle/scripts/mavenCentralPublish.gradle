@@ -30,7 +30,7 @@ if (project.hasProperty('user') && project.hasProperty('password')) {
 				}
 				pom {
 					description = 'Java wrapper providing an API to generate ApexCharts (https://github.com/apexcharts, https://github.com/apexcharts) in java'
-					name = 'Java Apex Charts (JApexCharts)'
+					name = 'JApexCharts'
 					url = 'https:github.com/ie3-institute/java-apexcharts'
 					organization {
 						name = 'Institute of Energy Systems, Energy Efficiency and Energy Economics (ie3)/TU Dortmund University'
@@ -62,7 +62,7 @@ if (project.hasProperty('user') && project.hasProperty('password')) {
 
 				removeTestDependenciesFromPom(pom)
 				groupId group
-				artifactId 'Java ApexCharts (JApexCharts)'
+				artifactId 'JApexCharts'
 				version version
 
 				from components.java
