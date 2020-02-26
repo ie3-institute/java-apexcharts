@@ -13,7 +13,6 @@ plugins {
 	id 'com.github.spotbugs' version '2.0.0' // code check, working on byte code
 	id 'com.diffplug.gradle.spotless' version '3.27.1'//code format
 	id "org.sonarqube" version "2.8" // sonarqube´
-	id 'pmd' // code check, working on source code
 	id 'jacoco' // java code coverage plugin
 	id 'maven-publish' // publish to a maven repo (local or mvn central, has to be defined)
 	id 'com.github.onslip.gradle-one-jar' version '1.0.5' // pack a self contained jar
