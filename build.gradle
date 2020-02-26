@@ -23,7 +23,7 @@ ext {
 	scriptsLocation = 'gradle' + File.separator + 'scripts' + File.separator //location of script plugins
 }
 
-group = 'edu.ie3.vis'
+group = 'com.github.ie3-institute'
 version = '0.1-SNAPSHOT'
 description = 'java-apexcharts'
 sourceCompatibility = javaVersion
