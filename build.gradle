@@ -29,7 +29,6 @@ description = 'java-apexcharts'
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
-apply from: scriptsLocation + 'tests.gradle'
 apply from: scriptsLocation + 'pmd.gradle'
 apply from: scriptsLocation + 'spotbugs.gradle'
 apply from: scriptsLocation + 'sonarqube.gradle' // sonarqube config
