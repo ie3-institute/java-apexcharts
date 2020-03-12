@@ -21,11 +21,20 @@ plugins {
 ext {
 	javaVersion = JavaVersion.VERSION_1_8
 	scriptsLocation = 'gradle' + File.separator + 'scripts' + File.separator //location of script plugins
+
+	versionNo = '0.1'
+
 }
 
 group = 'com.github.ie3-institute'
-version = '0.1-SNAPSHOT'
 description = 'java-apexcharts'
+
+if (project.hasProperty('release')) {
+	version = versionNo
+} else {
+	version = versionNo.concat('-SNAPSHOT')
+}
+
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
