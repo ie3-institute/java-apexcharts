@@ -435,10 +435,11 @@ def getFeatureBranchProps() {
 
 
 def getMasterBranchProps() {
-    properties(
-            [[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
-             [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: true, throttleOption: 'project']
-            ])
+    properties([parameters(
+            [string(defaultValue: '', description: '', name: 'release', trim: true)]),
+                [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
+                [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: true, throttleOption: 'project']
+    ])
 }
 
 
